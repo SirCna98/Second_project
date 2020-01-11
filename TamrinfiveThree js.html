@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../lib/THREE.js" ></script>
+        <style>
+            body{
+                margin: 0px;
+                overflow: hidden;
+            }
+            canvas{
+                background-color: royalblue;
+            }
+        </style>
+    </head>
+    <body>
+    <canvas id="myCanvas"></canvas>
+</body>
+        <script>
+            var canvas = document.getElementById('myCanvas');
+            var renderer = new THREE.WebGLRenderer({canvas});
+            renderer.setClearColor(0x23f6aa);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            render
+            //renderer.setSize(window , innerWidth , innerHeight);
+
+
+
+
+
+
+
+            var camera = new THREE.PerspectiveCamera(35 , window.innerWidth/innerHeight , 0.1 , 3000);
+            //camera.position.set( 0 , 0 , 0 );
+
+            var scene = new THREE.Scene();
+
+
+
+
+
+
+
+
+
+            var light = new THREE.AmbientLight(0xffffff , 0.5);
+            scene.add(light);
+
+
+
+
+            var light1 = new THREE.PointLight(0xffffff , 0.5);
+            scene.add(light1);
+
+
+
+
+
+            var geometry = new THREE.CubeGeometry(100,100,100);
+            var material = new THREE.MeshLambertMaterial({color : 0xF3D5A0});
+            var mesh = new THREE.Mesh(geometry , material);
+            mesh.position.set( 0 , 0 , -1000 );
+            scene.add(mesh);
+
+
+
+
+            requestAnimationFrame(render);
+
+            function render(){
+                mesh.rotation.x += 0.1;
+                mesh.rotation.y += 0.1;
+
+                renderer.render(scene , camera);
+                requestAnimationFrame(render);
+            }
+           
+
+            // document.body.appendChild(renderer.domElement);
+        </script>
+
+
+    
+</html>
